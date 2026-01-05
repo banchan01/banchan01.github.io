@@ -3,7 +3,7 @@ import vue from '@astrojs/vue';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://banchan.io',
+  site: 'https://banchan01.github.io',
   base: '/',
   integrations: [vue(), tailwind()],
 });
