@@ -1,6 +1,6 @@
 ---
 title: "Tesy"
-description: "AI-Powered English Learning Assistant & Telegram Bot"
+description: "AI-Powered English Learning service & Telegram chatting assistant"
 tags: ["Backend", "Frontend", "Docker", "Ruby on Rails", "React"]
 image: "/assets/img/tesy.png"
 github: "https://github.com/banchan01/TESY"
