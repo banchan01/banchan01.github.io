@@ -4,7 +4,7 @@ description: "A Chrome extension for detecting phishing URLs using ML model"
 tags: ["Chrome Extension", "ML", "Python"]
 image: "/assets/img/combined_cat.jpg"
 github: "https://github.com/banchan01/Ptector"
-order: 3
+order: 4
 ---
 
 Designed and optimized the **ML model** for a phishing URL detection Chrome extension as part of a Computer Networks course project.<br/>

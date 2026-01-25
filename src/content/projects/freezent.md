@@ -4,7 +4,7 @@ description: "A multi-agent system for stock price manipulation detection."
 tags: ["DL", "Backend", "Crawling"]
 image: "/assets/img/freezent.png"
 github: "https://github.com/banchan01/Freezent"
-order: 1
+order: 2
 ---
 
 Developed **analysis modules** for a stock price manipulation detection agent system using regulatory filings and market data, and trained **DL model**.<br/>

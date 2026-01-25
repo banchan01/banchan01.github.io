@@ -4,7 +4,7 @@ description: "A virtual stock investment web service for simulated market experi
 tags: ["Backend", "AWS", "MySQL", "Docker"]
 image: "/assets/img/hambook.png"
 github: "https://github.com/banchan01/hambookstocks.v3"
-order: 2
+order: 3
 ---
 
 Developed the **backend architecture** and **deployment** pipeline for a virtual stock investment service.<br/>
