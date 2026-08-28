@@ -1,6 +1,6 @@
 ---
 role: "Intern, Software Engineer"
-organization: "Sejoongis Co., Ltd."
+organization: "Sejoongis Co., Ltd., Daegu"
 date: "July 2025 – Aug 2025"
 tags: ["Backend", "Network", "Server"]
 order: 2

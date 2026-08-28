@@ -1,7 +1,7 @@
 ---
-role: "Backend Developer"
+role: "Full-Stack Developer"
 organization: "Software Education Center, PNU"
-date: "Sept 2025 – Present"
+date: "Oct 2025 - Feb 2026"
 website: "https://code.pusan.ac.kr/"
 github: "https://github.com/pnu-code-place"
 tags: ["Backend", "Frontend", "Server"]
