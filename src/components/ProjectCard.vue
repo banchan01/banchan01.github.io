@@ -8,10 +8,10 @@
             <div>
                 <h3
                     class="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors tracking-tight">
-                    {{ title }}
+                    <T :en="title" :ko="titleKo" />
                 </h3>
                 <p class="mt-4 text-sm text-slate-600 leading-relaxed font-normal line-clamp-3">
-                    {{ description }}
+                    <T :en="description" :ko="descriptionKo" />
                 </p>
             </div>
             <div class="mt-6 flex flex-wrap gap-2">
@@ -25,10 +25,14 @@
 </template>
 
 <script setup>
+import T from './T.vue';
+
 // 부모 컴포넌트(index.astro)에서 데이터를 받아올 수 있게 설정합니다.
 defineProps({
     title: String,
+    titleKo: String,
     description: String,
+    descriptionKo: String,
     tags: Array
 })
 </script>

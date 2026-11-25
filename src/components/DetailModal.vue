@@ -29,7 +29,7 @@
                 <!-- Close Button (Absolute) -->
                 <button @click="$emit('close')"
                     class="absolute top-4 right-4 z-20 p-2 bg-white/20 backdrop-blur-md hover:bg-white/40 rounded-full text-slate-800 transition-colors">
-                    <span class="sr-only">Close</span>
+                    <span class="sr-only"><T en="Close" ko="닫기" /></span>
                     <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M6 18L18 6M6 6l12 12" />
@@ -44,7 +44,7 @@
                         <img :src="image" :alt="title" class="w-full h-full object-cover" />
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                         <h3 class="absolute bottom-6 left-8 text-3xl font-bold text-white font-display drop-shadow-md">
-                            {{ title }}
+                            <T :en="title" :ko="titleKo" />
                         </h3>
                     </div>
 
@@ -52,7 +52,7 @@
                     <div class="p-8 sm:p-10" :class="{ 'editorial-theme': layoutMode === 'editorial' }">
                         <!-- Fallback Title if no Image -->
                         <div v-if="!image" class="mb-8 border-b border-slate-100 pb-6">
-                            <h3 class="text-3xl font-bold text-slate-900 font-display">{{ title }}</h3>
+                            <h3 class="text-3xl font-bold text-slate-900 font-display"><T :en="title" :ko="titleKo" /></h3>
                         </div>
 
                         <!-- Header: Tags (Left) & GitHub Link (Right) - Project Style -->
@@ -70,7 +70,7 @@
                                             d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    <span>GitHub Repository</span>
+                                    <T en="GitHub Repository" ko="GitHub 저장소" />
                                 </a>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                                     d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                             </svg>
                             <p class="text-xl text-slate-900 font-medium leading-relaxed">
-                                {{ description }}
+                                <T :en="description" :ko="descriptionKo" />
                             </p>
                         </div>
 
@@ -91,17 +91,17 @@
                         <div class="prose-content" @click="handleContentClick">
                             <!-- Integrated Overview for Editorial Mode -->
                             <div v-if="layoutMode === 'editorial'" class="mb-8">
-                                <h2 class="!mt-0">Overview</h2>
+                                <h2 class="!mt-0"><T en="Overview" ko="개요" /></h2>
                                 <div class="not-prose flex flex-col gap-1 mt-6 mb-8">
                                     <div class="flex items-baseline gap-2 text-slate-600">
                                         <!-- Website Link (Integrated into Title) -->
                                         <span class="font-bold text-lg leading-none text-slate-800">
-                                            {{ subtitle || 'Organization' }}
+                                            <T :en="subtitle || 'Organization'" :ko="subtitleKo || subtitle || '소속'" />
                                         </span>
 
                                         <span class="text-slate-300 leading-none">|</span>
                                         <span class="text-base font-medium text-slate-500 leading-none">
-                                            {{ date }}
+                                            <T :en="date" :ko="dateKo" />
                                         </span>
                                     </div>
                                 </div>
@@ -118,6 +118,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import T from './T.vue';
 
 const zoomedImage = ref(null)
 
@@ -131,10 +132,14 @@ const handleContentClick = (event) => {
 defineProps({
     isOpen: Boolean,
     title: String,
+    titleKo: String,
     image: String,
     description: String,
-    subtitle: String, // Changed logic to accept subtitle/organization manually
+    descriptionKo: String,
+    subtitle: String,
+    subtitleKo: String, // Changed logic to accept subtitle/organization manually
     date: String,     // Added date prop manually since it's now direct
+    dateKo: String,
     github: String,
     website: String,
     layoutMode: {

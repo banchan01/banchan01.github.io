@@ -1,11 +1,14 @@
 <template>
     <div class="flex flex-col gap-8">
-        <ExperienceCard v-for="(exp, index) in experiences" :key="index" :role="exp.role"
-            :organization="exp.organization" :date="exp.date" class="cursor-pointer" @click="openModal(exp)" />
+        <ExperienceCard v-for="(exp, index) in experiences" :key="index" :role="exp.role" :role-ko="exp.ko?.role"
+            :organization="exp.organization" :organization-ko="exp.ko?.organization" :date="exp.date"
+            :date-ko="exp.ko?.date" class="cursor-pointer" @click="openModal(exp)" />
 
-        <DetailModal :is-open="isModalOpen" :title="selectedExperience?.role" :website="selectedExperience?.website"
+        <DetailModal :is-open="isModalOpen" :title="selectedExperience?.role"
+            :title-ko="selectedExperience?.ko?.role" :website="selectedExperience?.website"
             :github="selectedExperience?.github" :subtitle="selectedExperience?.organization"
-            :date="selectedExperience?.date" layout-mode="editorial" @close="closeModal">
+            :subtitle-ko="selectedExperience?.ko?.organization" :date="selectedExperience?.date"
+            :date-ko="selectedExperience?.ko?.date" layout-mode="editorial" @close="closeModal">
             <template #header-meta>
                 <div class="flex flex-wrap gap-2">
                     <span v-for="tag in selectedExperience?.tags" :key="tag"
@@ -15,7 +18,9 @@
                 </div>
             </template>
             <template #default>
-                <div class="prose-content space-y-4 text-slate-600 leading-relaxed" v-html="selectedExperience?.html">
+                <div class="i18n-en prose-content space-y-4 text-slate-600 leading-relaxed" v-html="selectedExperience?.html">
+                </div>
+                <div class="i18n-ko prose-content space-y-4 text-slate-600 leading-relaxed" v-html="selectedExperience?.ko?.html ?? selectedExperience?.html">
                 </div>
             </template>
         </DetailModal>

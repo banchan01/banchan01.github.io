@@ -27,7 +27,28 @@ const experience = defineCollection({
   }),
 });
 
+// Korean translations. File names match the English entries;
+// fields left out fall back to the English version.
+const projectsKo = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().optional(),
+    description: z.string().optional(),
+  }),
+});
+
+const experienceKo = defineCollection({
+  type: 'content',
+  schema: z.object({
+    role: z.string().optional(),
+    organization: z.string().optional(),
+    date: z.string().optional(),
+  }),
+});
+
 export const collections = {
   projects,
   experience,
+  'projects-ko': projectsKo,
+  'experience-ko': experienceKo,
 };

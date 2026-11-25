@@ -1,11 +1,13 @@
 <template>
     <div class="flex flex-col gap-8">
         <ProjectCard v-for="project in projects" :key="project.slug" :title="project.data.title"
-            :description="project.data.description" :tags="project.data.tags" class="cursor-pointer"
+            :title-ko="project.ko?.title" :description="project.data.description"
+            :description-ko="project.ko?.description" :tags="project.data.tags" class="cursor-pointer"
             @click="openModal(project)" />
 
-        <DetailModal :is-open="isModalOpen" :title="selectedProject?.title" :image="selectedProject?.image"
-            :description="selectedProject?.description" :github="selectedProject?.github" @close="closeModal">
+        <DetailModal :is-open="isModalOpen" :title="selectedProject?.title" :title-ko="selectedProject?.ko?.title"
+            :image="selectedProject?.image" :description="selectedProject?.description"
+            :description-ko="selectedProject?.ko?.description" :github="selectedProject?.github" @close="closeModal">
             <template #header-meta>
                 <div class="flex flex-wrap gap-2">
                     <span v-for="tag in selectedProject?.tags" :key="tag"
@@ -15,7 +17,9 @@
                 </div>
             </template>
             <template #default>
-                <div class="prose-content space-y-4 text-slate-600 leading-relaxed" v-html="selectedProject?.html">
+                <div class="i18n-en prose-content space-y-4 text-slate-600 leading-relaxed" v-html="selectedProject?.html">
+                </div>
+                <div class="i18n-ko prose-content space-y-4 text-slate-600 leading-relaxed" v-html="selectedProject?.ko?.html ?? selectedProject?.html">
                 </div>
             </template>
         </DetailModal>
@@ -46,7 +50,8 @@ const openModal = (project) => {
         tags: project.data.tags,
         image: project.data.image,
         github: project.data.github,
-        html: project.html
+        html: project.html,
+        ko: project.ko
     };
     isModalOpen.value = true;
     document.body.style.overflow = 'hidden'; // Prevent background scrolling

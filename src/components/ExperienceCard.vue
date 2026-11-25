@@ -12,23 +12,23 @@
                 <div class="flex justify-between items-start gap-4 mb-2">
                     <h3
                         class="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors tracking-tight">
-                        {{ role }}
+                        <T :en="role" :ko="roleKo" />
                     </h3>
                     <span class="text-sm text-slate-400 font-medium whitespace-nowrap pt-1">
-                        {{ date }}
+                        <T :en="date" :ko="dateKo" />
                     </span>
                 </div>
 
                 <!-- Organization -->
                 <div class="text-lg text-slate-600 font-medium">
-                    {{ organization }}
+                    <T :en="organization" :ko="organizationKo" />
                 </div>
             </div>
 
             <!-- "View Details" Call to Action -->
             <div
                 class="mt-8 flex items-center text-sm font-bold text-emerald-600 transition-all duration-300 transform group-hover:translate-x-2">
-                View Details
+                <T en="View Details" ko="자세히 보기" />
                 <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -39,9 +39,14 @@
 </template>
 
 <script setup>
+import T from './T.vue';
+
 defineProps({
     role: String,
+    roleKo: String,
     organization: String,
-    date: String
+    organizationKo: String,
+    date: String,
+    dateKo: String
 })
 </script>
